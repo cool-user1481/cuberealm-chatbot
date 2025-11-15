@@ -1016,27 +1016,27 @@ Here is a list of major cities/villages/towns in cuberealm:
 Below is a list of important players in this game and how good they are based on kindness and skill:
 
 @Cube Created Cuberealm, he is the single developer.
-@Bro: Built many of the structures near spawn. He likes helping out new players, and doesn’t like to pvp. Very good.
-@Drawddigon: Built a giant library near spawn, as well as many other large structures. Good.
-@jebewok: A good builder who built a MASSIVE base using over 1000 protectors. Gives free food from a large spawn farm. Good
-@Vincent: A player who is fairly good at pvp. He has very many spawn chunks he puts on his alt, psudonym. Decently good.
-@12cu: Often considered the best pvper of all time in cuberealm. Quit due to a lack of updates. Good.
-@one_rat: owns a spawn chunk, considered one of the best pvpers of all time in cuberealm. Quit due to lack of updates. Good
-@fries: Quit a long time ago, but recently came back for a bit. Owns a few spawn chunks and a food shop. Good.
-@Hockey: Friends with fries, came back about the same time as fries. Good.
-@Duckzilla: Better known as DZ, Likes to pvp, annoying ahh player. Mostly uses alt accounts, such as Oathbreaker. Not the best at pvp. Not kind/good.
-@mom: Owns spawn chunks in a single line, including a hole with water at the bottom that players like to use as a place for pvp combat. Good sometimes.
+@Bro: Built many of the structures near spawn. He likes helping out new players, and doesn’t like to pvp. Considered very kind by the community.
+@Drawddigon: Built a giant library near spawn, as well as many other large structures. 
+@jebewok: A good builder who built a MASSIVE base using over 1000 protectors. Gives free food from a large spawn farm. 
+@Vincent: A player who is fairly good at pvp. He has very many spawn chunks he puts on his alt, psudonym.
+@12cu: Often considered the best pvper of all time in cuberealm. Quit due to a lack of updates.
+@one_rat: owns a spawn chunk, considered one of the best pvpers of all time in cuberealm. Quit due to lack of updates. 
+@fries: Quit a long time ago, but recently came back for a bit. Owns a few spawn chunks and a food shop. Considered kind by the community.
+@Hockey: Friends with fries, came back about the same time as fries.
+@Duckzilla: Better known as DZ, Likes to pvp. Mostly uses alt accounts, such as Oathbreaker, Try_Harder, and Lengend. A skilled pvper who is also decent at building.
+@mom: Owns spawn chunks in a single line, including a hole with water at the bottom that players like to use as a place for pvp combat.
 @DEED: Owns spawn chunks. Quit.
 @Skanerio: Built the parkour course near spawn.
-@Thibb1: Created Kb+, a Cuberealm script, and the stats bot. Good.
-@pi69: builder who has a spawn chunk and does some technical things. Good. 
-@Majdzon: dug a 1-chunk-wide hole from space to hell to create a dropper and put sky grass in hell. Also does technical things. Good, very kind.
-@coolussr1481: og player who is a builder and writes many scripts, such as the chat length limit remover. Good, very kind.
+@Thibb1: Created Kb+, a Cuberealm script, and the stats bot.
+@pi69: builder who has a spawn chunk and does some technical things. 
+@Majdzon: dug a 1-chunk-wide hole from space to hell to create a dropper and put sky grass in hell. Also does technical things. considered very kind by the community.
+@coolussr1481: og player who is a builder and writes many scripts, such as the chat length limit remover.
 @chatbot: a bot created by @Thibb1 to try to phase out stats. Use $help to view commands.
 @stats: a bot created by @Thibb1.
 @WiseMystic314281: bot created to annoy Thibb1.
-@RustyMonsterXD: a silly player who is decent at pvp. Funny. 
-@--SAN--: A Argentinian player who is active in the community and diislikes RustyMonsterXD. Good, kind.
-@Scripter_miner and @wisepilot_ They are brothers and are somewhat bothersome. Mid at pvp.
+@RustyMonsterXD: a silly player who is good at pvp. Has an interesting sence of humor.
+@--SAN--: A Argentinian player who is active in the community.
+@Scripter_miner and @wisepilot_ They are brothers and are somewhat bothersome. Mid at pvp. Scripter_miner, aka sc or sc_ is one of the most blocked (/ignore) players in the game due to being annoying.
 If a name is not on the list, say that they are not know by you (the ai) and the likely are a pvper, builder, or other player.
 Not all responses are players, so only use this info if a prompt askes who someone is or something starting with the at symbol.
