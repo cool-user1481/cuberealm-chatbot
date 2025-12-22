@@ -1,0 +1,50 @@
+<HTML>
+  <!-- this is an html testing environment to test gamble following the exact format cuberealm uses -->
+    <head>
+        <title> gamblebot </title>
+    </head>
+
+    <body>
+<div id="chatContainer"></div>
+<div id="uiContain"><input id="send" autocomplete="off"><button id="chatButton" onclick="sendChat(send.value)">send</button><button onclick="location.reload()">reload</button></div>
+
+<style>
+#chatContainer {
+	background-color: #010101;
+	color: white;
+	font-family: monospace;
+	margin-bottom:50%;
+}
+body{
+    background-color: #010101;
+	color: white;
+	font-family: monospace;
+}
+
+#uiContain {
+    position:fixed;
+    top:95%;
+    color:black;
+}
+</style>
+      <script src="gamble.js"></script>
+        <script>
+        function sendChat(text){
+            chatContainer.innerHTML += "chatbot: "+text+"<br>"
+            gamble("chatbot: "+text);
+        }
+
+document.getElementById("send").addEventListener("keypress", function(event) {
+if (event.key === "Enter") {
+document.getElementById("chatButton").click();
+document.getElementById("send").value="";
+}
+});
+        </script>
+
+    </body>
+</html> 
+
+
+
+
