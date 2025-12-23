@@ -1,4 +1,7 @@
-let gambleData = {};
+let gambleData = localStorage.getItem("gambleData") || {};
+setInterval(()=>{
+    localStorage.setItem("gambleData", gambleData);
+}, 10000)
 
 // gamble function is called on every chat message recived with the argument, text, of whatever the server sends.
 function gamble(text) {
