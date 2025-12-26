@@ -52,7 +52,7 @@ function gambleCoinflip(user, messageContent, gambleData) {
     }
 
     const regex = /^(heads|tails) (\d+)/;
-    const match = regex.exec(text.split(": $gamble coinflip ")[1]);
+    const match = regex.exec(messageContent.split("$gamble coinflip ")[1]);
 
     if (Number(match[2]) > gambleData[user].money) {
         sendChat(`@${user} You only have $${gambleData[user].money} chatbucks, so you cannot afford that bet.`)
