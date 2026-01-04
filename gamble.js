@@ -37,7 +37,7 @@ function gambleSignup(user, messageContent, gambleData) {
     gambleData[user] = {
         name: user,
         money: 100,
-        upgrades: [0.5, 0, 50], //formatt: % win rate-coinflip, money gained on lost coinflip bet, money gained from daily,
+        upgrades: [0.5, 0, 50], //formatt: % win rate-coinflip, money recovered on lost coinflip bet, money gained from daily,
         last: Math.floor(Date.now() / 1000 / 60 / 60 / 24),
     };
 
@@ -64,10 +64,10 @@ function gambleCoinflip(user, messageContent, gambleData) {
         sendChat(`@${user}: success! It landed on ${match[1]}. You earned ${match[2]} chatbucks, bringing your total to ${gambleData[user].money}!`)
     } else {
         gambleData[user].money -= Number(match[2]);
-        gambleData[user].money += Math.floor(Number(match[2]) * (gambleData[user].money / 100));
+        gambleData[user].money += Math.floor(Number(match[2]) * (gambleData[user].upgrades[1] / 100));
 
         if (gambleData[user].upgrades[1] !== 0) {
-            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks, but got back ${gambleData[user].upgrades[1]}%`)
+            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks, but recovered ${gambleData[user].upgrades[1]}%`)
         } else {
             sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks.`)
         }
@@ -76,7 +76,7 @@ function gambleCoinflip(user, messageContent, gambleData) {
 
 function gambleStats(user, messageContent, gambleData) {
     if (gambleData[user]) {
-        sendChat(`@${user} $${gambleData[user].money} chatbucks, a ${(gambleData[user].upgrades[0]) * 100}% chance of sucess on coinflips, and you get back ${gambleData[user].upgrades[1]}% on a failed bet of over $100.`)
+        sendChat(`@${user} $${gambleData[user].money} chatbucks, a ${(gambleData[user].upgrades[0]) * 100}% chance of sucess on coinflips, and you recover ${gambleData[user].upgrades[1]}% on a failed bet of over $100.`)
     } else {
         sendChat(`@${user} Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`)
     }
