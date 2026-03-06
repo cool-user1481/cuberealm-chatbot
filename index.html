@@ -2,17 +2,29 @@
   <head>
     <title>@chatbot - official code - CubeRealm.io</title>
     <style>
-      *{
+    :root {
+        color-scheme: light dark;
+    }
+    
+    *{
         font-family: sans-serif;
-      }
-
-      h1 {
+    }
+    
+    h1 {
         background: linear-gradient(138deg, #009EFF, #39FF4A);
-        font-color: transparent;
-        background-clipping: text;
-        -webkit-background-clipping: text;
-      }
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
     </style>
+    <script>
+    setTimeout(() => {
+        if(Math.random() < 0.05){
+            console.log("Easter Egg!")
+            document.querySelectorAll("*").forEach((e) => e.style.setProperty('font-family', 'cursive', 'important'));
+        }
+    }, 0);
+    </script>
   </head>
   <body>
     <h1>CubeRealm's very own @chatbot bot - by coolussr1481</h1>
