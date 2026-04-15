@@ -1,3 +1,11 @@
+// features is defined earlier in chatbot
+// This is a workaround for setups without it
+let gambleOn;
+if (features)
+    gambleOn = features.gamble;
+else
+    gambleOn = true;
+
 let gambleData = JSON.parse(localStorage.getItem("gambleData")) || {};
 setInterval(()=>{
     localStorage.setItem("gambleData", JSON.stringify(gambleData));
@@ -10,17 +18,17 @@ function gamble(text) {
     const messageContents = parts.slice(1).join(": ");
 
     try {
-        if (messageContents.startsWith("$gamble signup") && (features?.gamble ?? true)) {
+        if (messageContents.startsWith("$gamble signup") && gambleOn) {
             gambleSignup(user, messageContents, gambleData);
-        } else if (messageContents.startsWith("$gamble coinflip ") && (features?.gamble ?? true)) {
+        } else if (messageContents.startsWith("$gamble coinflip ") && gambleOn) {
             gambleCoinflip(user, messageContents, gambleData);
-        } else if (messageContents.startsWith("$gamble stats") && (features?.gamble ?? true)) {
+        } else if (messageContents.startsWith("$gamble stats") && gambleOn) {
             gambleStats(user, messageContents, gambleData);
-        } else if (messageContents.startsWith("$gamble daily") && (features?.gamble ?? true)) {
+        } else if (messageContents.startsWith("$gamble daily") && gambleOn) {
             gambleDaily(user, messageContents, gambleData);
-        } else if (messageContents.startsWith("$gamble addMoney") && (features?.gamble ?? true)) {
+        } else if (messageContents.startsWith("$gamble addMoney") && gambleOn) {
             gambleAddMoney(user, messageContents, gambleData);
-        } else if (messageContents.startsWith("$gamble ") && !(features?.gamble ?? true)){
+        } else if (messageContents.startsWith("$gamble ") && !gambleOn){
             sendChat("gamble is temporarily unavalible");
         }
     } catch {
