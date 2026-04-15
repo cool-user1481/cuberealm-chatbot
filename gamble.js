@@ -1,7 +1,7 @@
 let gambleData = JSON.parse(localStorage.getItem("gambleData")) || {};
 setInterval(()=>{
     localStorage.setItem("gambleData", JSON.stringify(gambleData));
-}, 10000)
+}, 10000);
 
 // gamble function is called on every chat message recived with the argument, text, of whatever the server sends.
 function gamble(text) {
@@ -10,18 +10,18 @@ function gamble(text) {
     const messageContents = parts.slice(1).join(": ");
 
     try {
-        if (messageContents.startsWith("$gamble signup")) {
+        if (messageContents.startsWith("$gamble signup") && (features?.gamble ?? true)) {
             gambleSignup(user, messageContents, gambleData);
-
-        } else if (messageContents.startsWith("$gamble coinflip ")) {
+        } else if (messageContents.startsWith("$gamble coinflip ") && (features?.gamble ?? true)) {
             gambleCoinflip(user, messageContents, gambleData);
-
-        } else if (messageContents.startsWith("$gamble stats")) {
+        } else if (messageContents.startsWith("$gamble stats") && (features?.gamble ?? true)) {
             gambleStats(user, messageContents, gambleData);
-           
-        } else if (messageContents.startsWith("$gamble daily")) {
+        } else if (messageContents.startsWith("$gamble daily") && (features?.gamble ?? true)) {
             gambleDaily(user, messageContents, gambleData);
-            
+        } else if (messageContents.startsWith("$gamble addMoney") && (features?.gamble ?? true)) {
+            gambleAddMoney(user, messageContents, gambleData);
+        } else if (messageContents.startsWith("$gamble ") && !(features?.gamble ?? true)){
+            sendChat("gamble is temporarily unavalible");
         }
     } catch {
         //silent error discarding for like when the message does not have : in it so like no console spam plz.
@@ -30,62 +30,60 @@ function gamble(text) {
 
 function gambleSignup(user, messageContent, gambleData) {
     if (gambleData[user]) {
-        sendChat(`@${user}, Error, you have already signed up.`)
-        return
+        sendChat(`@${user}, Error, you have already signed up.`);
+        return;
     }
 
     gambleData[user] = {
         name: user,
         money: 100,
-        upgrades: [0.5, 0, 50], //formatt: % win rate-coinflip, money recovered on lost coinflip bet, money gained from daily,
+        upgrades: [0.5, 0, 50], //formatt: % win rate-coinflip, money gained on lost coinflip bet, money gained from daily,
         last: Math.floor(Date.now() / 1000 / 60 / 60 / 24),
     };
-
-    console.log(JSON.stringify(gambleData))
-    sendChat(`@${user}, Thank you for signing up! Your chatbucks balance is now $100.`)
+    sendChat(`@${user}, Thank you for signing up! Your chatbucks balance is now $100.`);
 }
 
 function gambleCoinflip(user, messageContent, gambleData) {
     if (!gambleData[user]) {
-        sendChat(`@${user}: Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`)
-        return
+        sendChat(`@${user}: Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`);
+        return;
     }
 
     const regex = /^(heads|tails) (\d+)/;
     const match = regex.exec(messageContent.split("$gamble coinflip ")[1]);
 
     if (Number(match[2]) > gambleData[user].money) {
-        sendChat(`@${user} You only have $${gambleData[user].money} chatbucks, so you cannot afford that bet.`)
-        return
+        sendChat(`@${user} You only have $${gambleData[user].money} chatbucks, so you cannot afford that bet.`);
+        return;
     }
 
     if (Math.random() < gambleData[user].upgrades[0]) {
         gambleData[user].money += Number(match[2]);
-        sendChat(`@${user}: success! It landed on ${match[1]}. You earned ${match[2]} chatbucks, bringing your total to ${gambleData[user].money}!`)
+        sendChat(`@${user}: success! It landed on ${match[1]}. You earned ${match[2]} chatbucks, bringing your total to ${gambleData[user].money}!`);
     } else {
         gambleData[user].money -= Number(match[2]);
         gambleData[user].money += Math.floor(Number(match[2]) * (gambleData[user].upgrades[1] / 100));
 
         if (gambleData[user].upgrades[1] !== 0) {
-            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks, but recovered ${gambleData[user].upgrades[1]}%`)
+            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks, but got back ${gambleData[user].upgrades[1]}%`);
         } else {
-            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks.`)
+            sendChat(`Oh no! It did not land on ${match[1]} You lost ${match[2]} chatbucks.`);
         }
     }
 }
 
 function gambleStats(user, messageContent, gambleData) {
     if (gambleData[user]) {
-        sendChat(`@${user} $${gambleData[user].money} chatbucks, a ${(gambleData[user].upgrades[0]) * 100}% chance of sucess on coinflips, and you recover ${gambleData[user].upgrades[1]}% on a failed bet of over $100.`)
+        sendChat(`@${user} $${gambleData[user].money} chatbucks, a ${(gambleData[user].upgrades[0]) * 100}% chance of sucess on coinflips, and you get back ${gambleData[user].upgrades[1]}% on a failed bet of over $100.`);
     } else {
-        sendChat(`@${user} Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`)
+        sendChat(`@${user} Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`);
     }
 }
 
 function gambleDaily(user, messageContent, gambleData) {
     if (!gambleData[user]) {
-        sendChat(`@${user}: Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`)
-        return
+        sendChat(`@${user}: Error, you appear to not yet have a chabot gamble account. Create one with $gamble signup`);
+        return;
     }
 
     if (Math.floor(Date.now() / 1000 / 60 / 60 / 24) > gambleData[user].last) {
@@ -94,5 +92,19 @@ function gambleDaily(user, messageContent, gambleData) {
         sendChat(`@${user}: Gained $${gambleData[user].upgrades[2]} for daily money, come back tomorrow for more!`);
     } else {
         sendChat(`@${user}: You have already collected your daily for today, come back tomorrow`);
+    }
+}
+
+function gambleAddMoney(user, messageContent, gambleData){
+    if(["coolussr", "chatbot", "coolussr1481"].includes(user)){
+        let parts = messageContent.trim().split(" ");
+        let addTo = parts[2];
+        let amount = Number(parts[3]);
+        if(isNaN(amount))
+        sendChat("Syntax error: NaN");
+        else
+        gambleData[addTo].money += amount;
+    } else {
+        sendChat("Authentication error: nuh uh");
     }
 }
