@@ -1,21 +1,19 @@
 {
   "name": "cuberealm-chatbot",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync": "svelte-kit sync"
   },
   "devDependencies": {
-    "@fontsource/fira-mono": "^5.0.0",
-    "@sveltejs/adapter-vercel": "^6.3.3",
-    "@sveltejs/kit": "^2.53.2",
-    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
-    "svelte": "^5.0.0",
-    "vite": "^5.4.21"
-  },
-  "overrides": {
-    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^7.0.0",
+    "svelte": "^5.46.4",
+    "vite": "^8.0.0"
   }
 }
