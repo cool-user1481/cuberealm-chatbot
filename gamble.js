@@ -1,10 +1,8 @@
 // features is defined earlier in chatbot
 // This is a workaround for setups without it
-let gambleOn;
+let gambleOn = true;
 if (features)
     gambleOn = features.gamble;
-else
-    gambleOn = true;
 
 let gambleData = JSON.parse(localStorage.getItem("gambleData")) || {};
 setInterval(()=>{
