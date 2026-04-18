@@ -1,3 +1,5 @@
 {
-    "outputDirectory": "public"
+  "framework": "sveltekit",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".svelte-kit/vercel"
 }
